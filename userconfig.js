@@ -4,7 +4,7 @@ const palette = mocha;
 const default_config = {
   overrideStorage: true,
   temperature: {
-    location: "Delhi",
+    location: "New+Delhi",
     scale: "C",
   },
   clock: {
@@ -12,15 +12,15 @@ const default_config = {
     iconColor: palette.maroon,
   },
   disabled: [],
-  fastlink: "https://app.raindrop.io",
+  fastlink: "https://ashish0kumar.github.io/startpage/",
   openLastVisitedTab: true,
   tabs: [
     {
-      name: "work",
-      background_url: "src/img/banners/cbg-7.gif",
+      name: "start",
+      background_url: "src/img/banners/cbg-8.gif",
       categories: [
         {
-          name: "Google",
+          name: "comm & social",
           links: [
             {
               name: "gmail",
@@ -28,98 +28,6 @@ const default_config = {
               icon: "brand-gmail",
               icon_color: palette.blue,
             },
-            {
-              name: "sheets",
-              url: "https://docs.google.com/spreadsheets",
-              icon: "table",
-              icon_color: palette.red,
-            },
-            {
-              name: "drive",
-              url: "https://drive.google.com/drive/home",
-              icon: "brand-google-drive",
-              icon_color: palette.peach,
-            },
-            {
-              name: "classroom",
-              url: "https://classroom.google.com",
-              icon: "brand-google-classroom",
-              icon_color: palette.green,
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: "dev",
-      background_url: "src/img/banners/cbg-8.gif",
-      categories: [
-        {
-          name: "media",
-          links: [
-            {
-              name: "github",
-              url: "https://github.com",
-              icon: "brand-github",
-              icon_color: palette.teal,
-            },
-            {
-              name: "stackoverflow",
-              url: "https://stackoverflow.com",
-              icon: "brand-stackoverflow",
-              icon_color: palette.blue,
-            },
-            {
-              name: "wakatime",
-              url: "https://wakatime.com",
-              icon: "24-hours",
-              icon_color: palette.red,
-            },
-          ],
-        },
-        {
-          name: "resources",
-          links: [
-            {
-              name: "devdocs",
-              url: "https://devdocs.io/",
-              icon: "code",
-              icon_color: palette.flamingo,
-            },
-            {
-              name: "udemy",
-              url: "https://www.udemy.com/home/my-courses/learning/",
-              icon: "code",
-              icon_color: palette.sapphire,
-            },
-          ],
-        },
-        {
-          name: "dsa",
-          links: [
-            {
-              name: "leetcode",
-              url: "https://leetcode.com",
-              icon: "code-plus",
-              icon_color: palette.peach,
-            },
-            {
-              name: "tuf",
-              url: "https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2",
-              icon: "code-minus",
-              icon_color: palette.red,
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: "chi ll",
-      background_url: "src/img/banners/cbg-2.gif",
-      categories: [
-        {
-          name: "social",
-          links: [
             {
               name: "youtube",
               url: "https://www.youtube.com",
@@ -140,6 +48,58 @@ const default_config = {
             },
           ],
         },
+        {
+          name: "learning & dev",
+          links: [
+            {
+              name: "github",
+              url: "https://github.com",
+              icon: "brand-github",
+              icon_color: palette.teal,
+            },
+            {
+              name: "devdocs",
+              url: "https://devdocs.io/",
+              icon: "code",
+              icon_color: palette.flamingo,
+            },
+            {
+              name: "udemy",
+              url: "https://www.udemy.com/home/my-courses/learning/",
+              icon: "study",
+              icon_color: palette.sapphire,
+            },
+            {
+              name: "tuf",
+              url: "https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2",
+              icon: "code-minus",
+              icon_color: palette.red,
+            },
+            {
+              name: "leetcode",
+              url: "https://leetcode.com",
+              icon: "code-plus",
+              icon_color: palette.peach,
+            },
+          ],
+        },
+        {
+          name: "tools",
+          links: [
+            {
+              name: "chatgpt",
+              url: "https://chatgpt.com/",
+              icon: "brand-openai",
+              icon_color: palette.teal,
+            },
+            {
+              name: "claude",
+              url: "https://claude.ai/new",
+              icon: "brand-claude",
+              icon_color: palette.peach,
+            }
+          ]
+        }
       ],
     },
   ],
