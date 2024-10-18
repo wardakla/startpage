@@ -66,7 +66,7 @@ const default_config = {
             {
               name: "udemy",
               url: "https://www.udemy.com/home/my-courses/learning/",
-              icon: "study",
+              icon: "brand-udemy",
               icon_color: palette.sapphire,
             },
             {
@@ -95,7 +95,7 @@ const default_config = {
             {
               name: "claude",
               url: "https://claude.ai/new",
-              icon: "brand-claude",
+              icon: "brand-anthropic",
               icon_color: palette.peach,
             }
           ]
