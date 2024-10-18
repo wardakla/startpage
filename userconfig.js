@@ -4,7 +4,7 @@ const palette = mocha;
 const default_config = {
   overrideStorage: true,
   temperature: {
-    location: "New+Delhi",
+    location: "New Delhi",
     scale: "C",
   },
   clock: {
@@ -49,7 +49,7 @@ const default_config = {
           ],
         },
         {
-          name: "learning & dev",
+          name: "dev & dsa",
           links: [
             {
               name: "github",
@@ -66,25 +66,25 @@ const default_config = {
             {
               name: "udemy",
               url: "https://www.udemy.com/home/my-courses/learning/",
-              icon: "brand-udemy",
+              icon: "school",
               icon_color: palette.sapphire,
             },
             {
               name: "tuf",
               url: "https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2",
-              icon: "code-minus",
+              icon: "list-check",
               icon_color: palette.red,
             },
             {
               name: "leetcode",
               url: "https://leetcode.com",
-              icon: "code-plus",
+              icon: "puzzle",
               icon_color: palette.peach,
             },
           ],
         },
         {
-          name: "tools",
+          name: "ai tools",
           links: [
             {
               name: "chatgpt",
@@ -95,7 +95,7 @@ const default_config = {
             {
               name: "claude",
               url: "https://claude.ai/new",
-              icon: "brand-anthropic",
+              icon: "robot",
               icon_color: palette.peach,
             }
           ]
