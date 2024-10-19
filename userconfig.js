@@ -53,7 +53,7 @@ const default_config = {
           links: [
             {
               name: "github",
-              url: "https://github.com",
+              url: "https://github.com/ashish0kumar",
               icon: "brand-github",
               icon_color: palette.teal,
             },
@@ -66,19 +66,19 @@ const default_config = {
             {
               name: "udemy",
               url: "https://www.udemy.com/home/my-courses/learning/",
-              icon: "school",
+              icon: "certificate",
               icon_color: palette.sapphire,
             },
             {
               name: "tuf",
               url: "https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2",
-              icon: "list-check",
+              icon: "list-details",
               icon_color: palette.red,
             },
             {
               name: "leetcode",
-              url: "https://leetcode.com",
-              icon: "puzzle",
+              url: "https://leetcode.com/u/ashish0kumar/",
+              icon: "brand-leetcode",
               icon_color: palette.peach,
             },
           ],
