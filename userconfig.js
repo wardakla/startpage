@@ -1,26 +1,18 @@
 // latte / frappe / macchiato / mocha
-const palette = mocha;
+const palette = macchiato;
 
 const default_config = {
   overrideStorage: true,
-  temperature: {
-    location: "New Delhi",
-    scale: "C",
-  },
-  clock: {
-    format: "h:i p",
-    iconColor: palette.maroon,
-  },
   disabled: [],
-  fastlink: "https://ashish0kumar.github.io/startpage/",
   openLastVisitedTab: true,
+  localIcons: true,
   tabs: [
     {
       name: "start",
-      background_url: "src/img/banners/cbg-8.gif",
+      background_url: `src/img/banners/cbg-8.gif`,
       categories: [
         {
-          name: "comm & social",
+          name: "",
           links: [
             {
               name: "gmail",
@@ -28,6 +20,29 @@ const default_config = {
               icon: "brand-gmail",
               icon_color: palette.blue,
             },
+            {
+              name: "classroom",
+              url: "https://classroom.google.com/u/1/",
+              icon: "books",
+              icon_color: palette.green,
+            },
+            {
+              name: "drive",
+              url: "https://drive.google.com/",
+              icon: "brand-google-drive",
+              icon_color: palette.mauve,
+            },
+            {
+              name: "docs",
+              url: "https://docs.google.com/document/u/0/",
+              icon: "file-text",
+              icon_color: palette.blue,
+            },
+          ],
+        },
+        {
+          name: "",
+          links: [
             {
               name: "youtube",
               url: "https://www.youtube.com",
@@ -49,42 +64,53 @@ const default_config = {
           ],
         },
         {
-          name: "dev & dsa",
+          name: "",
           links: [
             {
               name: "github",
               url: "https://github.com/ashish0kumar",
               icon: "brand-github",
-              icon_color: palette.teal,
+              icon_color: palette.green,
             },
             {
-              name: "devdocs",
-              url: "https://devdocs.io/",
-              icon: "code",
-              icon_color: palette.flamingo,
-            },
-            {
-              name: "udemy",
-              url: "https://www.udemy.com/home/my-courses/learning/",
-              icon: "certificate",
-              icon_color: palette.sapphire,
-            },
-            {
-              name: "tuf",
-              url: "https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2",
-              icon: "list-details",
+              name: "wakatime",
+              url: "https://wakatime.com",
+              icon: "clock-24",
               icon_color: palette.red,
             },
             {
-              name: "leetcode",
-              url: "https://leetcode.com/u/ashish0kumar/",
-              icon: "brand-leetcode",
+              name: "devdocs",
+              url: "https://devdocs.io",
+              icon: "code",
               icon_color: palette.peach,
             },
           ],
         },
         {
-          name: "ai tools",
+          name: "",
+          links: [
+            {
+              name: "leetcode",
+              url: "https://leetcode.com/u/ashish0kumar/",
+              icon: "brand-leetcode",
+              icon_color: palette.yellow,
+            },
+            {
+              name: "dsa",
+              url: "https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2",
+              icon: "list-details",
+              icon_color: palette.red,
+            },
+            {
+              name: "udemy",
+              url: "https://www.udemy.com/home/my-courses/learning/",
+              icon: "certificate",
+              icon_color: palette.lavender,
+            },
+          ]
+        },
+        {
+          name: "",
           links: [
             {
               name: "chatgpt",
@@ -97,9 +123,15 @@ const default_config = {
               url: "https://claude.ai/new",
               icon: "robot",
               icon_color: palette.peach,
-            }
+            },
+            {
+              name: "monkeytype",
+              url: "https://monkeytype.com",
+              icon: "keyboard",
+              icon_color: palette.red,
+            },
           ]
-        }
+        },
       ],
     },
   ],

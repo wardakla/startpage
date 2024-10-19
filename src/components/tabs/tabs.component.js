@@ -102,7 +102,7 @@ class Tabs extends Component {
       }
 
       #panels {
-          border-radius: 5px 0 0 5px;
+          border-radius: 15px;
           width: 90%;
           max-width: 1200px;
           height: 450px;
@@ -120,7 +120,7 @@ class Tabs extends Component {
           height: 100%;
           overflow: hidden;
           position: relative;
-          border-radius: 10px 0 0 10px;
+          border-radius: 15px;
       }
 
       .categories ul {
@@ -141,7 +141,7 @@ class Tabs extends Component {
       }
 
       .categories ul:nth-child(1) {
-          --flavour: ${CONFIG.palette.green};
+          --flavour: ${CONFIG.palette.sapphire};
       }
 
       .categories ul:nth-child(2) {
@@ -173,7 +173,7 @@ class Tabs extends Component {
           width: 70%;
           height: 100%;
           background: ${CONFIG.palette.base};
-          padding: 5%;
+          padding: 4% 6%;
           flex-wrap: wrap;
       }
 
@@ -188,10 +188,10 @@ class Tabs extends Component {
           transition: all .2s;
           display: inline-flex;
           align-items: center;
-          padding: .4em .7em;
+          padding: .4em .8em;
           background: ${CONFIG.palette.mantle};
           box-shadow: 0 4px ${CONFIG.palette.mantle}, 0 5px 10px rgb(0 0 0 / 20%);
-          border-radius: 2px;
+          border-radius: 15px;
           margin-bottom: .7em;
       }
 
@@ -233,15 +233,9 @@ class Tabs extends Component {
           backdrop-filter: blur(3px);
       }
 
-      .categories .links li:not(:last-child) {
-          box-shadow: 0 1px 0 ${CONFIG.palette.text};
-          padding: 0 0 .5em 0;
-          margin-bottom: 1.5em;
-      }
-
       .categories .links li h1 {
           color: ${CONFIG.palette.text};
-        opacity: 0.5;
+          opacity: 0.5;
           font-size: 13px;
           margin-bottom: 1em;
           font-weight: 600;
@@ -291,7 +285,6 @@ class Tabs extends Component {
           <div class="categories">
             ${Category.getAll(this.tabs)}
           </div>
-          <status-bar class="!-"></status-bar>
         </div>
       </div>
     `;
