@@ -8,7 +8,7 @@ const default_config = {
   localIcons: true,
   tabs: [
     {
-      name: "start",
+      name: "home",
       background_url: `src/img/banners/cbg-8.gif`,
       categories: [
         {
@@ -27,16 +27,16 @@ const default_config = {
               icon_color: palette.green,
             },
             {
-              name: "drive",
-              url: "https://drive.google.com/",
-              icon: "brand-google-drive",
-              icon_color: palette.mauve,
-            },
-            {
               name: "docs",
               url: "https://docs.google.com/document/u/0/",
               icon: "file-text",
               icon_color: palette.blue,
+            },
+            {
+              name: "drive",
+              url: "https://drive.google.com/",
+              icon: "brand-google-drive",
+              icon_color: palette.mauve,
             },
           ],
         },
@@ -73,15 +73,15 @@ const default_config = {
               icon_color: palette.green,
             },
             {
-              name: "wakatime",
-              url: "https://wakatime.com",
-              icon: "clock-24",
-              icon_color: palette.red,
-            },
-            {
               name: "devdocs",
               url: "https://devdocs.io",
               icon: "code",
+              icon_color: palette.blue,
+            },
+            {
+              name: "dev.to",
+              url: "https://dev.to/",
+              icon: "zoom-code",
               icon_color: palette.peach,
             },
           ],

@@ -84,14 +84,6 @@ class Tabs extends Component {
 
   style() {
     return `
-      status-bar {
-          bottom: -70px;
-          height: 32px;
-          background: ${CONFIG.palette.base};
-          border-radius: 4px;
-          box-shadow: 0 10px 20px rgba(0, 0, 0, .25);
-      }
-
       #panels, #panels ul,
       #panels .links {
           position: absolute;
@@ -190,7 +182,7 @@ class Tabs extends Component {
           align-items: center;
           padding: .4em .8em;
           background: ${CONFIG.palette.mantle};
-          box-shadow: 0 4px ${CONFIG.palette.mantle}, 0 5px 10px rgb(0 0 0 / 20%);
+          box-shadow: 0 4px ${CONFIG.palette.mantle}, 0 5px 5px rgb(0 0 0 / 20%);
           border-radius: 15px;
           margin-bottom: .7em;
       }
@@ -199,7 +191,7 @@ class Tabs extends Component {
           display: inline-flex;
       }
 
-      .categories .link-info:not(:last-child) { margin-right: .5em; }
+      .categories .link-info:not(:last-child) { margin-right: 1em; }
 
       .categories ul .links a:hover {
           transform: translate(0, 4px);
@@ -217,7 +209,7 @@ class Tabs extends Component {
           height: 250px;
           padding: 1em;
           margin: auto;
-          border-radius: 5px;
+          border-radius: 15px;
           box-shadow: inset 0 0 0 2px var(--flavour);
           left: calc(15% - 42.5px);
           bottom: 0;
