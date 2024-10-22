@@ -79,9 +79,9 @@ const default_config = {
               icon_color: palette.blue,
             },
             {
-              name: "dev.to",
-              url: "https://dev.to/",
-              icon: "zoom-code",
+              name: "hacker-news",
+              url: "https://news.ycombinator.com",
+              icon: "news",
               icon_color: palette.peach,
             },
           ],
