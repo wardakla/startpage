@@ -32,12 +32,6 @@ const default_config = {
               icon: "file-text",
               icon_color: palette.blue,
             },
-            {
-              name: "drive",
-              url: "https://drive.google.com/",
-              icon: "brand-google-drive",
-              icon_color: palette.mauve,
-            },
           ],
         },
         {
