@@ -50,16 +50,10 @@ const default_config = {
               icon_color: palette.peach,
             },
             {
-              name: "x",
+              name: "twitter",
               url: "https://x.com",
               icon: "brand-x",
-              icon_color: palette.sky,
-            },
-            {
-              name: "discord",
-              url: "https://discord.com/channels/@me",
-              icon: "brand-discord",
-              icon_color: palette.blue,
+              icon_color: palette.text,
             },
           ],
         },
