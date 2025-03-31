@@ -92,7 +92,7 @@ const default_config = {
             {
               name: "dsa",
               url: "https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2",
-              icon: "list-details",
+              icon: "binary-tree",
               icon_color: palette.red,
             },
             {
@@ -115,14 +115,14 @@ const default_config = {
             {
               name: "claude",
               url: "https://claude.ai/new",
-              icon: "robot",
+              icon: "north-star",
               icon_color: palette.peach,
             },
             {
-              name: "monkeytype",
-              url: "https://monkeytype.com",
-              icon: "keyboard",
-              icon_color: palette.red,
+              name: "gemini",
+              url: "https://gemini.google.com/app",
+              icon: "flare",
+              icon_color: palette.blue,
             },
           ]
         },
