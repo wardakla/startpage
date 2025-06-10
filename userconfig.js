@@ -119,10 +119,10 @@ const default_config = {
               icon_color: palette.peach,
             },
             {
-              name: "gemini",
-              url: "https://gemini.google.com/app",
-              icon: "flare",
-              icon_color: palette.blue,
+              name: "perplexity",
+              url: "https://www.perplexity.ai/",
+              icon: "asterisk",
+              icon_color: palette.green,
             },
           ]
         },
