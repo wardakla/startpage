@@ -15,14 +15,14 @@ const default_config = {
           name: "",
           links: [
             {
-              name: "gmail",
-              url: "https://mail.google.com",
-              icon: "brand-gmail",
-              icon_color: palette.blue,
+              name: "google",
+              url: "https://www.google.com",
+              icon: "brand-chrome",
+              icon_color: palette.red,
             },
             {
               name: "classroom",
-              url: "https://classroom.google.com/u/1/",
+              url: "https://classroom.google.com/u/3/",
               icon: "books",
               icon_color: palette.green,
             },
@@ -32,11 +32,29 @@ const default_config = {
               icon: "file-text",
               icon_color: palette.blue,
             },
+            {
+              name: "drive",
+              url: "https://drive.google.com/drive/u/0/my-drive",
+              icon: "brand-google-drive",
+              icon_color: palette.yellow,
+            },
+            {
+              name: "photos",
+              url: "https://photos.google.com/",
+              icon: "brand-google-photos",
+              icon_color: palette.red,
+            },
           ],
         },
         {
           name: "",
           links: [
+            {
+              name: "whatsapp",
+              url: "https://web.whatsapp.com/",
+              icon: "brand-whatsapp",
+              icon_color: palette.green,
+            },
             {
               name: "youtube",
               url: "https://www.youtube.com",
@@ -55,6 +73,42 @@ const default_config = {
               icon: "brand-x",
               icon_color: palette.text,
             },
+           {
+              name: "instagram",
+              url: "https://www.instagram.com",
+              icon: "brand-instagram",
+              icon_color: palette.pink,
+            },
+            {
+              name: "tik-tok",
+              url: "https://www.tiktok.com",
+              icon: "brand-tiktok",
+              icon_color: palette.pink,
+            },
+            {
+              name: "facebook",
+              url: "https://www.facebook.com",
+              icon: "brand-facebook",
+              icon_color: palette.blue,
+            },
+            {
+              name: "telegram",
+              url: "https://web.telegram.org/",
+              icon: "brand-telegram",
+              icon_color: palette.teal,
+            },
+            {
+              name: "linkedin",
+              url: "https://www.linkedin.com",
+              icon: "brand-linkedin",
+              icon_color: palette.blue,
+            },
+            {
+              name: "swops",
+              url: "https://swopniladhikari.com.np",
+              icon: "home",
+              icon_color: palette.yellow,
+            },
           ],
         },
         {
@@ -62,7 +116,7 @@ const default_config = {
           links: [
             {
               name: "github",
-              url: "https://github.com/ashish0kumar",
+              url: "https://github.com/swopnil7",
               icon: "brand-github",
               icon_color: palette.green,
             },
@@ -78,6 +132,13 @@ const default_config = {
               icon: "news",
               icon_color: palette.peach,
             },
+            {
+              name: "stackoverflow",
+              url: "https://stackoverflow.com",
+              icon: "brand-stackoverflow",
+              icon_color: palette.orange,
+            },
+
           ],
         },
         {
@@ -85,22 +146,28 @@ const default_config = {
           links: [
             {
               name: "leetcode",
-              url: "https://leetcode.com/u/ashish0kumar/",
+              url: "https://leetcode.com/u/swopnil7/",
               icon: "brand-leetcode",
               icon_color: palette.yellow,
             },
             {
-              name: "dsa",
-              url: "https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2",
-              icon: "binary-tree",
-              icon_color: palette.red,
-            },
-            {
-              name: "udemy",
-              url: "https://www.udemy.com/home/my-courses/learning/",
-              icon: "certificate",
+              name: "w3schools",
+              url: "https://www.w3schools.com/",
+              icon: "school",
               icon_color: palette.lavender,
             },
+            {
+              name: "geeksforgeeks",
+              url: "https://www.geeksforgeeks.org/",
+              icon: "air-balloon",
+              icon_color: palette.green,
+            },
+            {
+              name: "freecodecamp",
+              url: "https://www.freecodecamp.org/",
+              icon: "code",
+              icon_color: palette.red,
+            }
           ]
         },
         {
@@ -113,10 +180,10 @@ const default_config = {
               icon_color: palette.teal,
             },
             {
-              name: "claude",
-              url: "https://claude.ai/new",
-              icon: "north-star",
-              icon_color: palette.peach,
+              name: "gemini",
+              url: "https://gemini.google.com/",
+              icon: "brand-google",
+              icon_color: palette.red,
             },
             {
               name: "perplexity",
@@ -124,6 +191,18 @@ const default_config = {
               icon: "asterisk",
               icon_color: palette.green,
             },
+            {
+              name: "claude",
+              url: "https://claude.ai/",
+              icon: "cloud",
+              icon_color: palette.blue,
+            },
+            {
+              name: "extensions",
+              url: "https://addons.mozilla.org/en-US/firefox/",
+              icon: "brand-firefox",
+              icon_color: palette.blue,
+            }
           ]
         },
       ],
