@@ -56,7 +56,7 @@ tabs-list {
 .greeting {
   font-family: 'JetBrains Mono', 'Fira Mono', 'Roboto Mono', monospace;
   font-size: 1.2rem;
-  color: #cba6f7;
+  color: #cdd6f4;
   background: linear-gradient(90deg, #1e1e2e 80%, #313244 100%);
   border-radius: 0.6rem;
   box-shadow: 0 2px 12px #18182566;
@@ -72,7 +72,6 @@ tabs-list {
   position: absolute;
   top: 80px;
   left: 40px;
-  font-weight: 700;
   transition: box-shadow 0.2s;
 }
 .greeting:hover {
