@@ -136,7 +136,7 @@ const default_config = {
               name: "stackoverflow",
               url: "https://stackoverflow.com",
               icon: "brand-stackoverflow",
-              icon_color: palette.orange,
+              icon_color: palette.lavender,
             },
 
           ],
