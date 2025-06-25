@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/myPreview.png"/>
+  <img src="assets/spreview.png"/>
 </p>
 
 ## 🪴 Overview
