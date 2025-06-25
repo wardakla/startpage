@@ -14,7 +14,58 @@
   </head>
 
   <body>
-    <div class="greeting">Hey, Swops!🤍</div>
+    <div id="greeting container"></div><div class="greeting" id="greeting"></div></div>
+    <script>
+      const greetings = [
+      "Hey, Swops!🤍",
+      "Welcome back, Swops!",
+      "Hope you have a great day, Swops!",
+      "Good to see you, Swops!",
+      "Ready to be productive, Swops?",
+      "Let's make today awesome, Swops!",
+      "Hello, Swops! 😊",
+      "Did you just teleport here, Swops? 🛸",
+      "Swops detected. Initiating awesomeness protocol.",
+      "Alert: Swops has entered the building! 🚨",
+      "Swops, your keyboard missed you.",
+      "Swops, are you ready to break the internet?",
+      "Swops, unleash your inner coding ninja! 🥷",
+      "Swops, don't forget to blink while coding.",
+      "Swops, the bugs are scared now.",
+      "Swops, did you bring snacks for the code?",
+      "Swops, your code called—it wants a hug.",
+      "Swops, time to outsmart the computer (again).",
+      "Swops, caffeine levels: sufficient?",
+      "Swops, let's make some digital magic! ✨",
+      "Swops, the code is watching you... 👀",
+      "Swops, did you hear that whisper from the terminal?",
+      "Swops, your code just blinked at me.",
+      "Swops, the bugs are plotting something strange tonight.",
+      "Swops, the matrix is glitching—did you do that?",
+      "Swops, your keyboard typed by itself while you were gone.",
+      "Swops, the pixels are rearranging themselves for you.",
+      "Swops, reality.exe has encountered an unexpected error.",
+      "Swops, the code dreams of electric sheep.",
+      "Swops, welcome to the twilight zone of programming."
+      ];
+      document.getElementById('greeting').textContent = greetings[Math.floor(Math.random() * greetings.length)];
+    </script>
+    <div class="digital-clock catppuccin-mocha" id="digitalClock"></div>
+    <script>
+      function updateDigitalClock() {
+      const now = new Date();
+      let h = now.getHours();
+      const m = now.getMinutes().toString().padStart(2, '0');
+      const s = now.getSeconds().toString().padStart(2, '0');
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      h = h % 12;
+      h = h ? h : 12; // the hour '0' should be '12'
+      h = h.toString().padStart(2, '0');
+      document.getElementById('digitalClock').textContent = `${h}:${m}:${s} ${ampm}`;
+      }
+      updateDigitalClock();
+      setInterval(updateDigitalClock, 1000);
+    </script>
     <tabs-list></tabs-list>
     <script type="text/javascript" src="src/common/palette.js"></script>
     <script type="text/javascript" src="src/common/utils.js"></script>
