@@ -95,7 +95,7 @@ class Tabs extends Component {
 
       #panels {
           border-radius: 15px;
-          width: 90%;
+          width: 95%;
           max-width: 1200px;
           height: 450px;
           right: 0;
@@ -165,7 +165,7 @@ class Tabs extends Component {
           width: 70%;
           height: 100%;
           background: ${CONFIG.palette.base};
-          padding: 4% 6%;
+          padding: 2% 2%;
           flex-wrap: wrap;
       }
 
