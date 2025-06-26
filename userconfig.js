@@ -30,9 +30,9 @@ const default_config = {
           name: "",
           links: [
             {
-              name: "google",
-              url: "https://www.google.com",
-              icon: "brand-chrome",
+              name: "gmail",
+              url: "https://mail.google.com/mail/u/3/#inbox",
+              icon: "brand-gmail",
               icon_color: palette.red,
             },
             {
