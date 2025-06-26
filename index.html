@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <div id="greeting container"></div><div class="greeting" id="greeting"></div></div>
+    <div class="greeting" id="greeting"></div>
     <script>
       const name = "Swops";
       const greetings = [
@@ -73,7 +73,7 @@
       const s = now.getSeconds().toString().padStart(2, '0');
       const ampm = h >= 12 ? 'PM' : 'AM';
       h = h % 12;
-      h = h ? h : 12; // the hour '0' should be '12'
+      h = h ? h : 12;
       h = h.toString().padStart(2, '0');
       document.getElementById('digitalClock').textContent = `${h}:${m}:${s} ${ampm}`;
       }
@@ -91,16 +91,11 @@
     <script type="text/javascript" src="src/common/component.js"></script>
 
     <script type="text/javascript" src="./userconfig.js"></script>
-
     <script type="text/javascript" src="src/components/tabs/tabs.component.js"></script>
-
     <script type="text/javascript" src="src/components/weather/weather.api.js"></script>
     <script type="text/javascript" src="src/components/weather/weather.component.js"></script>
-
     <script type="text/javascript" src="src/components/clock/clock.component.js"></script>
-
     <script type="text/javascript" src="src/components/statusbar/statusbar.component.js"></script>
-
     <script type="text/javascript" src="src/common/module.js"></script>
   </body>
 </html>

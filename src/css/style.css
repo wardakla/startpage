@@ -55,7 +55,7 @@ tabs-list {
 
 .greeting {
   font-family: 'JetBrains Mono', 'Fira Mono', 'Roboto Mono', monospace;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #cdd6f4;
   background: linear-gradient(90deg, #1e1e2e 80%, #313244 100%);
   border-radius: 0.6rem;
@@ -68,9 +68,9 @@ tabs-list {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 38px;
+  height: 30px;
   position: absolute;
-  top: 80px;
+  top: 90px;
   left: 40px;
   transition: box-shadow 0.2s;
 }
@@ -81,7 +81,7 @@ tabs-list {
 
 .digital-clock.catppuccin-mocha {
   font-family: 'JetBrains Mono', 'Fira Mono', 'Roboto Mono', monospace;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #cdd6f4;
   background: linear-gradient(90deg, #1e1e2e 80%, #313244 100%);
   border-radius: 0.6rem;
@@ -91,10 +91,10 @@ tabs-list {
   letter-spacing: 0.08em;
   border: 1.5px solid #45475a;
   text-shadow: 0 1px 6px #585b7088;
-  height: 38px;
+  height: 30px;
   min-width: 120px;
   position: absolute;
-  top: 80px;
+  top: 90px;
   right: 40px;
   transition: box-shadow 0.2s;
   display: flex;
@@ -106,3 +106,5 @@ tabs-list {
   box-shadow: 0 4px 20px #b4befe44;
   border-color: #b4befe;
 }
+
+

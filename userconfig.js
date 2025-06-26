@@ -3,6 +3,21 @@ const palette = mocha;
 
 const default_config = {
   overrideStorage: true,
+  temperature: {
+    location: "Kathmandu",
+    scale: "C",
+  },
+  search: {
+    engines: {
+      p: ["https://www.perplexity.ai/search/?q=", "PerplexityAI"],
+      d: ["https://duckduckgo.com/?q=", "DuckDuckGo"],
+      g: ["https://google.com/search?q=", "Google"],
+    },
+    default: "d",
+  },
+  keybindings: {
+    "s": "search-bar",
+  },
   disabled: [],
   openLastVisitedTab: true,
   localIcons: true,
@@ -207,6 +222,105 @@ const default_config = {
         },
       ],
     },
+    {
+      name: "Extras",
+      background_url: `src/img/banners/cbg-10.gif`,
+      categories: [
+        {
+          name: "",
+          links: [
+            {
+              name: "sflix",
+              url: "https://sflix.is/",
+              icon: "movie",
+              icon_color: palette.red,
+            },
+            {
+              name: "netmirror",
+              url: "https://netfree2.cc/",
+              icon: "brand-netflix",
+              icon_color: palette.green,
+            },
+            {
+              name: "popcorn movies",
+              url: "https://popcornmovies.to/",
+              icon: "brand-pepsi",
+              icon_color: palette.yellow,
+            },
+            {
+              name: "watch filmy",
+              url: "https://watchfilmy.lat/",
+              icon: "brand-amazon",
+              icon_color: palette.blue,
+            },
+          ],
+        },
+        {
+          name: "",
+          links: [
+             {
+              name: "dodi-repack",
+              url: "https://dodi-repacks.site/",
+              icon: "device-gamepad",
+              icon_color: palette.red,
+            },
+            {
+              name: "fitgirl-repack",
+              url: "https://fitgirl-repacks.site/",
+              icon: "device-gamepad-2",
+              icon_color: palette.green,
+            },
+            {
+              name: "diakov",
+              url: "https://diakov.net/",
+              icon: "egg-cracked",
+              icon_color: palette.blue,
+            },
+            {
+              name: "get into pc",
+              url: "https://getintopc.com/",
+              icon: "download",
+              icon_color: palette.yellow,
+            },
+          ],
+        },
+        {
+          name: "",
+          links: [
+            {
+              name: "fotmob",
+              url: "https://www.fotmob.com/",
+              icon: "soccer-field",
+              icon_color: palette.yellow,
+            },
+            {
+              name: "efHub",
+              url : "https://efootballhub.com/",
+              icon: "ball-football",
+              icon_color: palette.blue,
+            },
+            {
+              name: "cricbuzz",
+              url: "https://www.cricbuzz.com/",
+              icon: "cricket",
+              icon_color: palette.peach,
+            },
+            {
+              name: "hoofoot",
+              url: "https://www.hoofoot.com/",
+              icon: "ball-basketball",
+              icon_color: palette.green,
+            },
+            {
+              name: "footem",
+              url: "https://footem.site/",
+              icon: "ball-football",
+              icon_color: palette.red,
+            },
+          ],
+        }
+      ],
+    }
   ],
 };
 

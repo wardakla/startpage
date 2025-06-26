@@ -46,7 +46,7 @@ class Statusbar extends Component {
           height: 100%;
           position: relative;
           list-style: none;
-          margin-left: 1em;
+          margin-left: 0;
       }
 
       #tabs ul li:not(:last-child)::after {
@@ -119,8 +119,7 @@ class Statusbar extends Component {
 
       .widgets {
           right: 0;
-          margin: auto;
-          height: 32px;
+          height: 28px;
           color: #fff;
           font-size: 12px;
       }
@@ -133,6 +132,7 @@ class Statusbar extends Component {
           position: relative;
           height: 100%;
           padding: 0 1em;
+          border-radius: 0 0.6em 0.6em 0;
       }
 
       .widget:first-child {
@@ -176,7 +176,8 @@ class Statusbar extends Component {
           background: ${CONFIG.palette.mantle};
           color: ${CONFIG.palette.green};
           cursor: pointer;
-          border-radius: 5px 15px 15px 5px;
+          border-radius: 15px;
+          transform: scale(0.8);
       }
 
       .fastlink:hover {
@@ -198,7 +199,6 @@ class Statusbar extends Component {
                 </button>
                 <ul class="- indicator"></ul>
                 <div class="+ widgets col-end">
-                    <current-time class="+ widget"></current-time>
                     <weather-forecast class="+ widget weather"></weather-forecast>
                 </div>
             </cols>
