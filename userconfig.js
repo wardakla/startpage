@@ -295,7 +295,7 @@ const default_config = {
             },
             {
               name: "efHub",
-              url : "https://efootballhub.com/",
+              url : "https://efootballhub.net/efootball23",
               icon: "ball-football",
               icon_color: palette.blue,
             },
