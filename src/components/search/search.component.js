@@ -649,7 +649,7 @@ class Search extends Component {
     if (index >= 0 && index < this.suggestions.length) {
       const suggestion = this.suggestions[index];
       this.saveToLocalHistory(suggestion.url, suggestion.title);
-      window.open(suggestion.url, '_blank');
+      window.location.href = suggestion.url;
       this.deactivate();
     }
   }
@@ -769,7 +769,7 @@ class Search extends Component {
         // Navigate directly to the URL
         const formattedUrl = this.formatUrl(fullInput);
         this.saveToLocalHistory(formattedUrl);
-        window.open(formattedUrl, '_blank');
+        window.location.href = formattedUrl;
         this.deactivate();
         return;
       }
@@ -786,7 +786,7 @@ class Search extends Component {
       // Navigate to search results
       const searchUrl = engine + encodeURI(args.join(' '));
       this.saveToLocalHistory(searchUrl, `Search: ${args.join(' ')}`);
-      window.open(searchUrl, '_blank');
+      window.location.href = searchUrl;
       this.deactivate();
       return;
     }
