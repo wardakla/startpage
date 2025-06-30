@@ -7,17 +7,6 @@ const default_config = {
     location: "Kathmandu",
     scale: "C",
   },
-  search: {
-    engines: {
-      p: ["https://www.perplexity.ai/search/?q=", "PerplexityAI"],
-      d: ["https://duckduckgo.com/?q=", "DuckDuckGo"],
-      g: ["https://google.com/search?q=", "Google"],
-    },
-    default: "d",
-  },
-  keybindings: {
-    "s": "search-bar",
-  },
   disabled: [],
   openLastVisitedTab: true,
   localIcons: true,
