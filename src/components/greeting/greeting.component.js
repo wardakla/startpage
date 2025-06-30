@@ -75,10 +75,9 @@ class Greeting extends Component {
         justify-content: center;
         cursor: pointer;
       }
-
       .greeting:hover {
-        box-shadow: 0 2px 12px #b4befe66;
-        border-color: #b4befe;
+        box-shadow: 0 4px 16px #18182588;
+        border-color: #6c7086;
       }
     `;
   }

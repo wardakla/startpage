@@ -5,6 +5,7 @@ class DigitalClock extends Component {
 
   constructor() {
     super();
+    this.showDate = false; // Toggle between time and date
   }
 
   imports() {
@@ -34,11 +35,13 @@ class DigitalClock extends Component {
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
+        user-select: none;
       }
 
       .digital-clock.catppuccin-mocha:hover {
-        box-shadow: 0 2px 12px #b4befe66;
-        border-color: #b4befe;
+        box-shadow: 0 4px 16px #18182588;
+        border-color: #6c7086;
       }
     `;
   }
@@ -51,14 +54,34 @@ class DigitalClock extends Component {
 
   updateDigitalClock() {
     const now = new Date();
-    let h = now.getHours();
-    const m = now.getMinutes().toString().padStart(2, '0');
-    const s = now.getSeconds().toString().padStart(2, '0');
-    const ampm = h >= 12 ? 'PM' : 'AM';
-    h = h % 12;
-    h = h ? h : 12;
-    h = h.toString().padStart(2, '0');
-    this.refs.digitalClock.textContent = `${h}:${m}:${s} ${ampm}`;
+    
+    if (this.showDate) {
+      // Display date format: Mon, June 5
+      const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June',
+                         'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dev'];
+      
+      const dayName = dayNames[now.getDay()];
+      const monthName = monthNames[now.getMonth()];
+      const date = now.getDate();
+      
+      this.refs.digitalClock.textContent = `${dayName}, ${monthName} ${date}`;
+    } else {
+      // Display time format: 12:34:56 PM
+      let h = now.getHours();
+      const m = now.getMinutes().toString().padStart(2, '0');
+      const s = now.getSeconds().toString().padStart(2, '0');
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      h = h % 12;
+      h = h ? h : 12;
+      h = h.toString().padStart(2, '0');
+      this.refs.digitalClock.textContent = `${h}:${m}:${s} ${ampm}`;
+    }
+  }
+
+  toggleDisplay() {
+    this.showDate = !this.showDate;
+    this.updateDigitalClock();
   }
 
   connectedCallback() {
@@ -66,6 +89,11 @@ class DigitalClock extends Component {
       // Initialize clock
       this.updateDigitalClock();
       setInterval(() => this.updateDigitalClock(), 1000);
+      
+      // Add click event listener for toggle
+      this.refs.digitalClock.addEventListener('click', () => {
+        this.toggleDisplay();
+      });
     });
   }
 }

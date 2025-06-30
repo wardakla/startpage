@@ -53,6 +53,7 @@ class Search extends Component {
           width: 100%;
           max-width: 600px;
           margin: 0 40px;
+          min-height: 60px;
       }
 
       #search input {
@@ -119,18 +120,21 @@ class Search extends Component {
 
       .search-suggestions {
           position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          background: #181825;
-          border: 1px solid #45475a;
-          border-radius: 8px;
-          margin-top: 8px;
-          max-height: 200px;
+          top: 60px;
+          left: -40px;
+          right: -40px;
+          background: transparent;
+          border: none;
+          border-radius: 0;
+          margin-top: 0;
+          max-height: 300px;
           overflow-y: auto;
+          overflow-x: hidden;
           z-index: 100;
-          box-shadow: 0 4px 12px #11111b80;
           display: none;
+          border-top: 1px solid #313244;
+          padding-top: 8px;
+          box-sizing: border-box;
       }
 
       .search-suggestions.active {
@@ -138,33 +142,45 @@ class Search extends Component {
       }
 
       .search-suggestion {
-          padding: 8px 12px;
+          padding: 8px 0;
           cursor: pointer;
-          color: #cdd6f4;
+          color: #6c7086;
           border-bottom: 1px solid #313244;
-          font-size: 14px;
-          transition: background-color 0.2s ease;
+          font-size: 13px;
+          transition: all 0.2s ease;
+          background: transparent;
+          border-left: 2px solid transparent;
+          padding-left: 8px;
       }
 
       .search-suggestion:last-child {
-          border-bottom: none;
+          border-bottom: 1px solid #313244;
       }
 
       .search-suggestion:hover,
       .search-suggestion.selected {
-          background: #313244;
           color: #b4befe;
+          border-left-color: #b4befe;
+          background: rgba(180, 190, 254, 0.05);
+          padding-left: 12px;
       }
 
       .search-suggestion .url {
-          color: #6c7086;
-          font-size: 12px;
+          color: #585b70;
+          font-size: 11px;
           margin-top: 2px;
+          font-family: 'JetBrains Mono', monospace;
       }
 
       .search-suggestion .title {
-          font-weight: 500;
-          margin-bottom: 2px;
+          font-weight: 400;
+          margin-bottom: 1px;
+          font-family: 'JetBrains Mono', monospace;
+      }
+
+      .search-suggestion:hover .url,
+      .search-suggestion.selected .url {
+          color: #7c7f93;
       }
 
       .clear-history {
@@ -240,7 +256,19 @@ class Search extends Component {
     if (this.refs.search && this.refs.input) {
       this.refs.search.classList.add('active');
       this.refs.input.scrollIntoView();
-      setTimeout(() => this.refs.input.focus(), 100);
+      setTimeout(() => {
+        this.refs.input.focus();
+        // Show recent history when search is activated
+        if (this.suggestionsEnabled) {
+          try {
+            const recentHistory = JSON.parse(localStorage.getItem('search_history') || '[]');
+            const results = recentHistory.slice(0, 5);
+            this.displaySuggestions(results);
+          } catch (error) {
+            console.log('Could not load recent history on activate');
+          }
+        }
+      }, 100);
     } else {
       console.log('Search refs not ready:', this.refs);
     }
@@ -252,6 +280,11 @@ class Search extends Component {
    */
   deactivate() {
     this.refs.search.classList.remove('active');
+    this.hideSuggestions();
+    // Clear the input when closing
+    if (this.refs.input) {
+      this.refs.input.value = '';
+    }
   }
 
   /**
@@ -310,11 +343,146 @@ class Search extends Component {
    * @returns {Array} Array of matching history entries
    */
   searchHistory(query) {
-    if (!query || query.length < 2) {
+    if (!query || query.length < 1) {
       return [];
     }
 
-    return this.searchLocalHistory(query);
+    // Combine results from both history and tabs
+    const historyResults = this.searchLocalHistory(query);
+    const tabResults = this.searchTabs(query);
+    
+    // Merge and sort all results by score, then by timestamp
+    const allResults = [...historyResults, ...tabResults]
+      .sort((a, b) => {
+        if (b.score !== a.score) {
+          return b.score - a.score;
+        }
+        return (b.timestamp || 0) - (a.timestamp || 0);
+      })
+      .slice(0, 8); // Limit to 8 total results
+
+    console.log('Combined search results for "' + query + '":', allResults);
+    return allResults;
+  }
+
+  /**
+   * Search through configured tabs for matches
+   * @param {string} query - The search query
+   * @returns {Array} Array of matching tab entries
+   */
+  searchTabs(query) {
+    if (!window.CONFIG?.tabs) {
+      return [];
+    }
+
+    const results = [];
+    
+    try {
+      window.CONFIG.tabs.forEach(tab => {
+        if (tab.categories) {
+          tab.categories.forEach(category => {
+            if (category.links) {
+              category.links.forEach(link => {
+                if (link.name && link.url) {
+                  const nameScore = this.fuzzyMatchScore(query, link.name);
+                  const urlScore = this.fuzzyMatchScore(query, link.url);
+                  const score = Math.max(nameScore, urlScore);
+                  
+                  if (score > 0) {
+                    results.push({
+                      url: link.url,
+                      title: link.name,
+                      score: score,
+                      isTab: true // Mark as tab result
+                    });
+                  }
+                }
+              });
+            }
+          });
+        }
+      });
+    } catch (error) {
+      console.log('Error searching tabs:', error);
+    }
+
+    return results;
+  }
+
+  /**
+   * Calculate fuzzy match score between query and text
+   * @param {string} query - The search query
+   * @param {string} text - The text to match against
+   * @returns {number} Match score (higher is better, 0 means no match)
+   */
+  fuzzyMatchScore(query, text) {
+    if (!query || !text) return 0;
+    
+    const queryLower = query.toLowerCase();
+    const textLower = text.toLowerCase();
+    
+    // Exact substring match gets highest score
+    if (textLower.includes(queryLower)) {
+      const index = textLower.indexOf(queryLower);
+      // Prefer matches at the beginning
+      return 100 - index;
+    }
+    
+    // Check if text starts with query (partial match)
+    if (textLower.startsWith(queryLower)) {
+      return 90;
+    }
+    
+    // Check for word boundary matches (e.g., "cri" matches "cristiano")
+    const words = textLower.split(/[\s\-_\.]+/);
+    for (let word of words) {
+      if (word.startsWith(queryLower)) {
+        return 80;
+      }
+    }
+    
+    // Character sequence matching for fuzzy search
+    let score = 0;
+    let queryIndex = 0;
+    let consecutiveMatches = 0;
+    let lastMatchIndex = -1;
+    
+    for (let i = 0; i < textLower.length && queryIndex < queryLower.length; i++) {
+      if (textLower[i] === queryLower[queryIndex]) {
+        score += 2;
+        
+        // Bonus for consecutive characters
+        if (i === lastMatchIndex + 1) {
+          consecutiveMatches++;
+          score += consecutiveMatches * 3; // More bonus for longer sequences
+        } else {
+          consecutiveMatches = 1;
+        }
+        
+        // Bonus for early matches
+        if (queryIndex === 0 && i < 3) {
+          score += 10;
+        }
+        
+        lastMatchIndex = i;
+        queryIndex++;
+      }
+    }
+    
+    // Must match all characters to be considered
+    if (queryIndex < queryLower.length) {
+      return 0;
+    }
+    
+    // Bonus for shorter text (more relevant)
+    score += Math.max(0, 20 - textLower.length);
+    
+    // Penalty for too much distance between matches
+    if (lastMatchIndex > queryLower.length * 3) {
+      score *= 0.5;
+    }
+    
+    return Math.max(0, Math.min(100, score));
   }
 
   /**
@@ -327,13 +495,30 @@ class Search extends Component {
       const localHistory = JSON.parse(localStorage.getItem('search_history') || '[]');
       const queryLower = query.toLowerCase();
 
-      return localHistory
-        .filter(item =>
-          item.url.toLowerCase().includes(queryLower) ||
-          (item.title && item.title.toLowerCase().includes(queryLower))
-        )
+      const results = localHistory
+        .map(item => {
+          // Calculate fuzzy match scores for both title and URL
+          const titleScore = this.fuzzyMatchScore(query, item.title || '');
+          const urlScore = this.fuzzyMatchScore(query, item.url || '');
+          const score = Math.max(titleScore, urlScore);
+          
+          return { ...item, score };
+        })
+        .filter(item => item.score > 0) // Only include items with a match
+        .sort((a, b) => {
+          // First sort by score (higher is better)
+          if (b.score !== a.score) {
+            return b.score - a.score;
+          }
+          // Then by recency
+          return b.timestamp - a.timestamp;
+        })
         .slice(0, 8);
+
+      console.log('Search history results for "' + query + '":', results);
+      return results;
     } catch (error) {
+      console.log('Error searching local history:', error);
       return [];
     }
   }
@@ -352,9 +537,13 @@ class Search extends Component {
 
     try {
       const localHistory = JSON.parse(localStorage.getItem('search_history') || '[]');
-      const newEntry = { url, title: title || url, timestamp: Date.now() };
+      const newEntry = { 
+        url: url, 
+        title: title || url, 
+        timestamp: Date.now() 
+      };
 
-      // Remove if already exists
+      // Remove if already exists (to avoid duplicates)
       const filtered = localHistory.filter(item => item.url !== url);
 
       // Add to beginning and limit to 50 entries
@@ -362,8 +551,9 @@ class Search extends Component {
       const limited = filtered.slice(0, 50);
 
       localStorage.setItem('search_history', JSON.stringify(limited));
+      console.log('Saved to history:', newEntry);
     } catch (error) {
-      console.log('Could not save to local history');
+      console.log('Could not save to local history:', error);
     }
   }
 
@@ -387,20 +577,19 @@ class Search extends Component {
    * @returns {void}
    */
   updateClearHistoryButton() {
-    // Only show clear history button if suggestions are enabled
-    if (!this.suggestionsEnabled) {
-      this.refs.clearHistory.classList.remove('visible');
-      return;
-    }
-
     try {
       const history = JSON.parse(localStorage.getItem('search_history') || '[]');
+      console.log('Current history length:', history.length);
+      
       if (history.length > 0) {
         this.refs.clearHistory.classList.add('visible');
+        console.log('Clear history button shown');
       } else {
         this.refs.clearHistory.classList.remove('visible');
+        console.log('Clear history button hidden');
       }
     } catch (error) {
+      console.log('Error updating clear history button:', error);
       this.refs.clearHistory.classList.remove('visible');
     }
   }
@@ -419,6 +608,8 @@ class Search extends Component {
     this.suggestions = suggestions;
     this.selectedSuggestion = -1;
 
+    console.log('Displaying suggestions:', suggestions);
+
     if (suggestions.length === 0) {
       this.refs.suggestions.classList.remove('active');
       return;
@@ -427,10 +618,11 @@ class Search extends Component {
     const suggestionsHtml = suggestions.map((suggestion, index) => {
       const title = suggestion.title || suggestion.url;
       const displayUrl = suggestion.url.replace(/^https?:\/\//, '');
+      const isTab = suggestion.isTab ? ' ⭐' : '';
 
       return `
         <div class="search-suggestion" data-index="${index}" data-url="${suggestion.url}">
-          <div class="title">${this.escapeHtml(title)}</div>
+          <div class="title">${this.escapeHtml(title)}${isTab}</div>
           <div class="url">${this.escapeHtml(displayUrl)}</div>
         </div>
       `;
@@ -457,7 +649,8 @@ class Search extends Component {
     if (index >= 0 && index < this.suggestions.length) {
       const suggestion = this.suggestions[index];
       this.saveToLocalHistory(suggestion.url, suggestion.title);
-      window.location = suggestion.url;
+      window.open(suggestion.url, '_blank');
+      this.deactivate();
     }
   }
 
@@ -576,7 +769,8 @@ class Search extends Component {
         // Navigate directly to the URL
         const formattedUrl = this.formatUrl(fullInput);
         this.saveToLocalHistory(formattedUrl);
-        window.location = formattedUrl;
+        window.open(formattedUrl, '_blank');
+        this.deactivate();
         return;
       }
 
@@ -590,7 +784,10 @@ class Search extends Component {
       }
 
       // Navigate to search results
-      window.location = engine + encodeURI(args.join(' '));
+      const searchUrl = engine + encodeURI(args.join(' '));
+      this.saveToLocalHistory(searchUrl, `Search: ${args.join(' ')}`);
+      window.open(searchUrl, '_blank');
+      this.deactivate();
       return;
     }
 
@@ -598,7 +795,22 @@ class Search extends Component {
     if (key !== 'ArrowDown' && key !== 'ArrowUp' && key !== 'Enter' && key !== 'Escape') {
       // Only search for suggestions if feature is enabled
       if (this.suggestionsEnabled) {
-        const results = this.searchHistory(target.value);
+        const query = target.value.trim();
+        let results = [];
+        
+        if (query.length === 0) {
+          // Show recent history when input is empty
+          try {
+            const recentHistory = JSON.parse(localStorage.getItem('search_history') || '[]');
+            results = recentHistory.slice(0, 5); // Show top 5 recent items
+          } catch (error) {
+            results = [];
+          }
+        } else {
+          // Search history based on query
+          results = this.searchHistory(query);
+        }
+        
         this.displaySuggestions(results);
       }
     }
@@ -679,7 +891,12 @@ class Search extends Component {
           { url: 'https://stackoverflow.com', title: 'Stack Overflow', timestamp: Date.now() - 172800000 },
           { url: 'https://developer.mozilla.org', title: 'MDN Web Docs', timestamp: Date.now() - 259200000 },
           { url: 'https://www.google.com', title: 'Google', timestamp: Date.now() - 345600000 },
-          { url: 'https://news.ycombinator.com', title: 'Hacker News', timestamp: Date.now() - 432000000 }
+          { url: 'https://news.ycombinator.com', title: 'Hacker News', timestamp: Date.now() - 432000000 },
+          { url: 'https://cristiano.com', title: 'Cristiano Ronaldo', timestamp: Date.now() - 518400000 },
+          { url: 'https://chrisbrown.com', title: 'Chris Brown', timestamp: Date.now() - 604800000 },
+          { url: 'https://cricket.com', title: 'Cricket World', timestamp: Date.now() - 691200000 },
+          { url: 'https://creative.com', title: 'Creative Studio', timestamp: Date.now() - 777600000 },
+          { url: 'https://crimson.edu', title: 'Crimson Education', timestamp: Date.now() - 864000000 }
         ];
         localStorage.setItem('search_history', JSON.stringify(sampleHistory));
       }
