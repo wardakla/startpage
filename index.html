@@ -14,75 +14,9 @@
   </head>
 
   <body>
-    <div class="greeting" id="greeting"></div>
-    <script>
-      const name = "Swops";
-      const greetings = [
-        `Hey, ${name}!🤍`,
-        `Welcome back, ${name}!`,
-        `Hope you have a great day, ${name}!`,
-        `Good to see you, ${name}!`,
-        `Ready to be productive, ${name}?`,
-        `Let's make today awesome, ${name}!`,
-        `Hello, ${name}! 😊`,
-        `Did you just teleport here, ${name}? 🛸`,
-        `${name} detected. Initiating awesomeness protocol.`,
-        `Alert: ${name} has entered the building! 🚨`,
-        `${name}, your keyboard missed you.`,
-        `${name}, are you ready to break the internet?`,
-        `${name}, unleash your inner coding ninja! 🥷`,
-        `${name}, don't forget to blink while coding.`,
-        `${name}, the bugs are scared now.`,
-        `${name}, did you bring snacks for the code?`,
-        `${name}, your code called—it wants a hug.`,
-        `${name}, time to outsmart the computer (again).`,
-        `${name}, caffeine levels: sufficient?`,
-        `${name}, let's make some digital magic! ✨`,
-        `${name}, the code is watching you... 👀`,
-        `${name}, did you hear that whisper from the terminal?`,
-        `${name}, your code just blinked at me.`,
-        `${name}, the bugs are plotting something strange tonight.`,
-        `${name}, the matrix is glitching—did you do that?`,
-        `${name}, your keyboard typed by itself while you were gone.`,
-        `${name}, the pixels are rearranging themselves for you.`,
-        `${name}, reality.exe has encountered an unexpected error.`,
-        `${name}, the code dreams of electric sheep.`,
-        `${name}, welcome to the twilight zone of programming.`,
-        `${name}, your code is ready for a wild ride!`,
-        `${name}, the universe is waiting for your next commit.`,
-        `${name}, did you just summon the coding spirits?`,
-        `${name}, your code is now sentient.`,
-        `${name}, the code gods are pleased with your presence.`,
-        `${name}, let's conquer the digital realm together!`
-      ];
-
-      function setRandomGreeting() {
-        document.getElementById('greeting').textContent = greetings[Math.floor(Math.random() * greetings.length)];
-      }
-
-      document.getElementById('greeting').addEventListener('click', setRandomGreeting);
-
-      setRandomGreeting();
-
-    </script>
-    <div class="digital-clock catppuccin-mocha" id="digitalClock"></div>
-    <script>
-      function updateDigitalClock() {
-      const now = new Date();
-      let h = now.getHours();
-      const m = now.getMinutes().toString().padStart(2, '0');
-      const s = now.getSeconds().toString().padStart(2, '0');
-      const ampm = h >= 12 ? 'PM' : 'AM';
-      h = h % 12;
-      h = h ? h : 12;
-      h = h.toString().padStart(2, '0');
-      document.getElementById('digitalClock').textContent = `${h}:${m}:${s} ${ampm}`;
-      }
-      updateDigitalClock();
-      setInterval(updateDigitalClock, 1000);
-    </script>
-    
-    <!--  -->
+    <greeting-module></greeting-module>
+    <clock-module></clock-module>
+    <search-overlay></search-overlay>
     <tabs-list></tabs-list>
     <script type="text/javascript" src="src/common/palette.js"></script>
     <script type="text/javascript" src="src/common/utils.js"></script>
@@ -91,13 +25,15 @@
     <script type="text/javascript" src="src/common/config.js"></script>
     <script type="text/javascript" src="src/common/strftime.js"></script>
     <script type="text/javascript" src="src/common/component.js"></script>
-
     <script type="text/javascript" src="./userconfig.js"></script>
+    <script type="text/javascript" src="src/components/greeting/greeting.component.js"></script>
+    <script type="text/javascript" src="src/components/clock/clock.component.js"></script>
+    <script type="text/javascript" src="src/components/search/search.component.js"></script>
     <script type="text/javascript" src="src/components/tabs/tabs.component.js"></script>
     <script type="text/javascript" src="src/components/weather/weather.api.js"></script>
     <script type="text/javascript" src="src/components/weather/weather.component.js"></script>
-    <script type="text/javascript" src="src/components/clock/clock.component.js"></script>
     <script type="text/javascript" src="src/components/statusbar/statusbar.component.js"></script>
     <script type="text/javascript" src="src/common/module.js"></script>
+    <script type="text/javascript" src="src/common/shortcuts.js"></script>
   </body>
 </html>

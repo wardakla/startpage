@@ -1,8 +1,10 @@
 const components = {
   "status-bar": Statusbar,
-  "current-time": Clock,
   "weather-forecast": Weather,
   "tabs-list": Tabs,
+  "greeting-module": Greeting,
+  "clock-module": DigitalClock,
+  "search-overlay": Search,
 };
 
 Object.keys(components).forEach((componentName) => {

@@ -1,7 +1,6 @@
-class Clock extends Component {
+class DigitalClock extends Component {
   refs = {
-    clock: ".clock-time",
-    icon: ".clock-icon",
+    digitalClock: "#digitalClock"
   };
 
   constructor() {
@@ -9,47 +8,64 @@ class Clock extends Component {
   }
 
   imports() {
-    return [this.resources.icons.material, this.resources.fonts.roboto];
+    return [this.resources.fonts.roboto];
   }
 
   style() {
     return `
-        .clock-time {
-            white-space: nowrap;
-            font: 300 9pt 'Roboto', sans-serif;
-            color: ${CONFIG.palette.text};
-            letter-spacing: .5px;
-        }
+      .digital-clock.catppuccin-mocha {
+        font-family: 'JetBrains Mono', 'Fira Mono', 'Roboto Mono', monospace;
+        font-size: 1rem;
+        color: #cdd6f4;
+        background: linear-gradient(90deg, #1e1e2e 80%, #313244 100%);
+        border-radius: 0.6rem;
+        box-shadow: 0 2px 12px #18182566;
+        margin: 1.5em 1em 1em 1em;
+        padding: 0.2em 0.5em;
+        letter-spacing: 0.08em;
+        border: 1.5px solid #45475a;
+        text-shadow: 0 1px 6px #585b7088;
+        height: 20px;
+        min-width: 120px;
+        position: absolute;
+        top: 105px;
+        right: 40px;
+        transition: box-shadow 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-        .clock-icon {
-            font-size: 10pt;
-            margin-right: 10px;
-        }
+      .digital-clock.catppuccin-mocha:hover {
+        box-shadow: 0 2px 12px #b4befe66;
+        border-color: #b4befe;
+      }
     `;
   }
 
   template() {
     return `
-        <span class="material-icons clock-icon">schedule</span>
-        <p class="clock-time"></p>
+      <div class="digital-clock catppuccin-mocha" id="digitalClock"></div>
     `;
   }
 
-  setIconColor() {
-    this.refs.icon.style.color = CONFIG.palette.maroon;
-  }
-
-  setTime() {
-    const date = new Date();
-    this.refs.clock = date.strftime(CONFIG.clock.format);
+  updateDigitalClock() {
+    const now = new Date();
+    let h = now.getHours();
+    const m = now.getMinutes().toString().padStart(2, '0');
+    const s = now.getSeconds().toString().padStart(2, '0');
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12;
+    h = h ? h : 12;
+    h = h.toString().padStart(2, '0');
+    this.refs.digitalClock.textContent = `${h}:${m}:${s} ${ampm}`;
   }
 
   connectedCallback() {
     this.render().then(() => {
-      this.setTime();
-      this.setIconColor();
-
-      setInterval(() => this.setTime(), 1000);
+      // Initialize clock
+      this.updateDigitalClock();
+      setInterval(() => this.updateDigitalClock(), 1000);
     });
   }
 }

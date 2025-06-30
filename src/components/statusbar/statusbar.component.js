@@ -209,7 +209,9 @@ class Statusbar extends Component {
     this.refs.tabs.forEach((tab) => (tab.onclick = ({ target }) => this.handleTabChange(target)));
 
     document.onkeydown = (e) => this.handleKeyPress(e);
-    document.onwheel = (e) => this.handleWheelScroll(e);
+    
+    // Removed wheel event completely - only keyboard navigation now
+    
     this.refs.fastlink.onclick = () => {
       console.log(CONFIG.fastlink);
       if (CONFIG.config.fastlink) {

@@ -99,7 +99,7 @@ class Tabs extends Component {
         height: 30px;
         min-width: 120px;
         position: absolute;
-        top: 455px;
+        top: 430px;
         right: 40px;
         transition: box-shadow 0.2s;
         display: flex;
@@ -120,7 +120,7 @@ class Tabs extends Component {
         border-radius: 15px;
         width: 95%;
         max-width: 1200px;
-        height: 450px;
+        height: 420px;
         right: 0;
         left: 0;
         top: 0;
@@ -188,8 +188,34 @@ class Tabs extends Component {
         width: 70%;
         height: 100%;
         background: ${CONFIG.palette.base};
-        padding: 2% 2%;
+        padding: 1% 1%;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+
+      .categories .links-wrapper {
+        display: flex;
         flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+      }
+
+      .categories .links::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .categories .links::-webkit-scrollbar-track {
+        background: ${CONFIG.palette.mantle};
+        border-radius: 4px;
+      }
+
+      .categories .links::-webkit-scrollbar-thumb {
+        background: ${CONFIG.palette.surface1};
+        border-radius: 4px;
+      }
+
+      .categories .links::-webkit-scrollbar-thumb:hover {
+        background: ${CONFIG.palette.surface2};
       }
 
       .categories .links li {
@@ -266,11 +292,6 @@ class Tabs extends Component {
 
       .categories .link-icon + .link-name {
         margin-left: 10px;
-      }
-
-      .categories .links-wrapper {
-        display: flex;
-        flex-wrap: wrap;
       }
 
       .ti {

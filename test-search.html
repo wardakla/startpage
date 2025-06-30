@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Component Test</title>
+    <style>
+        body { font-family: monospace; background: #1e1e2e; color: #cdd6f4; }
+        button { background: #b4befe; color: #1e1e2e; border: none; padding: 10px; margin: 5px; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Search Component Test</h1>
+    <button onclick="testSearch()">Test Search Component</button>
+    <button onclick="testKeyboard()">Test Keyboard Shortcut (Ctrl+K)</button>
+    
+    <div id="log" style="margin-top: 20px; padding: 10px; background: #313244; border-radius: 4px;"></div>
+    
+    <!-- Include all necessary scripts -->
+    <script type="text/javascript" src="src/common/palette.js"></script>
+    <script type="text/javascript" src="src/common/utils.js"></script>
+    <script type="text/javascript" src="src/common/storage.js"></script>
+    <script type="text/javascript" src="src/common/actions.js"></script>
+    <script type="text/javascript" src="src/common/config.js"></script>
+    <script type="text/javascript" src="src/common/strftime.js"></script>
+    <script type="text/javascript" src="src/common/component.js"></script>
+    <script type="text/javascript" src="./userconfig.js"></script>
+    <script type="text/javascript" src="src/components/search/search.component.js"></script>
+    <script type="text/javascript" src="src/common/module.js"></script>
+    <script type="text/javascript" src="src/common/shortcuts.js"></script>
+    
+    <!-- Add the search component -->
+    <search-overlay></search-overlay>
+    
+    <script>
+        function log(message) {
+            const logDiv = document.getElementById('log');
+            logDiv.innerHTML += '<div>' + new Date().toLocaleTimeString() + ': ' + message + '</div>';
+            console.log(message);
+        }
+        
+        function testSearch() {
+            log('Testing search component...');
+            const searchComponent = document.querySelector('search-overlay');
+            log('Search component found: ' + !!searchComponent);
+            
+            if (searchComponent) {
+                log('Search component type: ' + searchComponent.constructor.name);
+                log('Has activate method: ' + (typeof searchComponent.activate === 'function'));
+                
+                if (typeof searchComponent.activate === 'function') {
+                    try {
+                        searchComponent.activate();
+                        log('Search activated successfully!');
+                    } catch (error) {
+                        log('Error activating search: ' + error.message);
+                    }
+                } else {
+                    log('Activate method not found');
+                }
+            } else {
+                log('Search component not found');
+            }
+        }
+        
+        function testKeyboard() {
+            log('Testing keyboard shortcut...');
+            // Simulate Ctrl+K
+            const event = new KeyboardEvent('keydown', {
+                key: 'k',
+                ctrlKey: true,
+                bubbles: true
+            });
+            document.dispatchEvent(event);
+            log('Keyboard event dispatched');
+        }
+        
+        // Add keyboard listener
+        document.addEventListener('keydown', function(event) {
+            if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+                event.preventDefault();
+                log('Ctrl+K pressed - activating search...');
+                testSearch();
+            }
+        });
+        
+        // Test on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            log('Page loaded');
+            setTimeout(() => {
+                log('Checking components after delay...');
+                const searchComponent = document.querySelector('search-overlay');
+                log('Search component after delay: ' + !!searchComponent);
+                if (searchComponent) {
+                    log('Component ready for testing');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
