@@ -8,6 +8,20 @@ class Config {
     clock: {
       format: "h:i p",
     },
+    search: {
+          engines: {
+      d: ["https://duckduckgo.com/?q=", "DuckDuckGo"],
+      g: ["https://google.com/search?q=", "Google"],
+      y: ["https://youtube.com/results?search_query=", "Youtube"],
+      r: ["https://www.reddit.com/search/?q=", "Reddit"],
+      w: ["https://en.wikipedia.org/wiki/", "Wikipedia"],
+      n: ["https://www.netflix.com/search?q=", "Netflix"],
+      gh: ["https://github.com/search?q=", "GitHub"],
+      so: ["https://stackoverflow.com/search?q=", "Stack Overflow"],
+      md: ["https://developer.mozilla.org/en-US/search?q=", "MDN"],
+    },
+    default: "g"
+  },
     disabled: [],
     openLastVisitedTab: false,
     tabs: [],
