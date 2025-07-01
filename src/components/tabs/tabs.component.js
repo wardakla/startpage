@@ -146,7 +146,6 @@ class Tabs extends Component {
         right: 100%;
         background: ${CONFIG.palette.base} url("../img/bg-1.gif") repeat left;
         transition: all .6s;
-        # animation: scroll 25s ease-in-out infinite;
       }
 
       @keyframes scroll {
@@ -188,16 +187,23 @@ class Tabs extends Component {
         width: 70%;
         height: 100%;
         background: ${CONFIG.palette.base};
-        padding: 1% 1%;
+        padding: 1% 1% 0.5% 1%;
         overflow-y: auto;
         overflow-x: hidden;
+        box-sizing: border-box;
       }
 
       .categories .links-wrapper {
         display: flex;
         flex-wrap: wrap;
+        gap: 0.8em 1em;
         width: 100%;
         height: auto;
+        box-sizing: border-box;
+        overflow: hidden;
+        padding-bottom: 0.4em;
+        align-items: flex-start;
+        justify-content: flex-start;
       }
 
       .categories .links::-webkit-scrollbar {
@@ -220,6 +226,7 @@ class Tabs extends Component {
 
       .categories .links li {
         list-style: none;
+        margin-bottom: 1.2em;
       }
 
       .categories ul .links a {
@@ -233,14 +240,23 @@ class Tabs extends Component {
         background: ${CONFIG.palette.mantle};
         box-shadow: 0 4px ${CONFIG.palette.mantle}, 0 5px 5px rgb(0 0 0 / 20%);
         border-radius: 15px;
-        margin-bottom: .7em;
+        justify-content: flex-start;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-height: 2em;
+        box-sizing: border-box;
+        width: auto;
+        min-width: fit-content;
       }
 
       .categories .link-info {
-        display: inline-flex;
+        display: flex;
+        width: auto;
+        justify-content: flex-start;
       }
 
-      .categories .link-info:not(:last-child) { margin-right: 1em; }
+      .categories .link-info:not(:last-child) { margin-right: 0; }
 
       .categories ul .links a:hover {
         transform: translate(0, 4px);

@@ -66,15 +66,20 @@ class Greeting extends Component {
         text-shadow: 0 1px 6px #585b7088;
         height: 20px;
         min-width: 100px;
+        max-width: calc(100vw - 300px);
         position: absolute;
-        top: 105px;
+        top: calc(20% - 55px);
         left: 40px;
         transition: box-shadow 0.2s;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
+      
       .greeting:hover {
         box-shadow: 0 4px 16px #18182588;
         border-color: #6c7086;

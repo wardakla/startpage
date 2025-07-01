@@ -46,11 +46,10 @@ body {
 tabs-list {
   position: absolute;
   width: 100%;
-  height: 55%;
-  top: 20%;
+  height: 420px;
+  top: 21%;
   background-repeat: no-repeat;
   background-size: cover;
   background-color: var(--bg);
 }
-
 

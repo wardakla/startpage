@@ -29,7 +29,7 @@ class DigitalClock extends Component {
         height: 20px;
         min-width: 120px;
         position: absolute;
-        top: 105px;
+        top: calc(20% - 55px);
         right: 40px;
         transition: box-shadow 0.2s;
         display: flex;
@@ -59,7 +59,7 @@ class DigitalClock extends Component {
       // Display date format: Mon, June 5
       const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
       const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June',
-                         'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dev'];
+                         'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       
       const dayName = dayNames[now.getDay()];
       const monthName = monthNames[now.getMonth()];

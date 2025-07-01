@@ -52,7 +52,7 @@ class Search extends Component {
           position: relative;
           width: 100%;
           max-width: 600px;
-          margin: 0 40px;
+          margin: 0 2rem;
           min-height: 60px;
       }
 
@@ -121,8 +121,8 @@ class Search extends Component {
       .search-suggestions {
           position: absolute;
           top: 60px;
-          left: -40px;
-          right: -40px;
+          left: -2rem;
+          right: -2rem;
           background: transparent;
           border: none;
           border-radius: 0;
