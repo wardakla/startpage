@@ -18,34 +18,16 @@ const default_config = {
           name: "",
           links: [
             {
-              name: "gmail",
-              url: "https://mail.google.com/mail/u/3/#inbox",
+              name: "mail",
+              url: "https://mail.proton.me/u/0/inbox",
               icon: "brand-gmail",
               icon_color: palette.red,
             },
             {
-              name: "classroom",
-              url: "https://classroom.google.com/u/3/",
-              icon: "books",
-              icon_color: palette.green,
-            },
-            {
-              name: "docs",
-              url: "https://docs.google.com/document/u/0/",
-              icon: "file-text",
+              name: "protonvpn",
+              url: "https://account.proton.me/login",
+              icon: "shield",
               icon_color: palette.blue,
-            },
-            {
-              name: "drive",
-              url: "https://drive.google.com/drive/u/0/my-drive",
-              icon: "brand-google-drive",
-              icon_color: palette.yellow,
-            },
-            {
-              name: "photos",
-              url: "https://photos.google.com/",
-              icon: "brand-google-photos",
-              icon_color: palette.red,
             },
           ],
         },
@@ -76,16 +58,10 @@ const default_config = {
               icon: "brand-x",
               icon_color: palette.text,
             },
-           {
+            {
               name: "instagram",
               url: "https://www.instagram.com",
               icon: "brand-instagram",
-              icon_color: palette.pink,
-            },
-            {
-              name: "tik-tok",
-              url: "https://www.tiktok.com",
-              icon: "brand-tiktok",
               icon_color: palette.pink,
             },
             {
@@ -99,18 +75,6 @@ const default_config = {
               url: "https://web.telegram.org/",
               icon: "brand-telegram",
               icon_color: palette.teal,
-            },
-            {
-              name: "linkedin",
-              url: "https://www.linkedin.com",
-              icon: "brand-linkedin",
-              icon_color: palette.blue,
-            },
-            {
-              name: "swops",
-              url: "https://swopniladhikari.com.np",
-              icon: "home",
-              icon_color: palette.yellow,
             },
           ],
         },
@@ -136,12 +100,11 @@ const default_config = {
               icon_color: palette.peach,
             },
             {
-              name: "stackoverflow",
-              url: "https://stackoverflow.com",
-              icon: "brand-stackoverflow",
-              icon_color: palette.lavender,
+              name: "protondb",
+              url: "https://www.protondb.com",
+              icon: "atom",
+              icon_color: palette.green,
             },
-
           ],
         },
         {
@@ -246,7 +209,7 @@ const default_config = {
         {
           name: "",
           links: [
-             {
+            {
               name: "dodi-repack",
               url: "https://dodi-repacks.site/",
               icon: "device-gamepad",
